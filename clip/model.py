@@ -434,6 +434,7 @@ def convert_weights(model: nn.Module):
     model.apply(_convert_weights_to_fp16)
 
 
+def build_model(state_dict: dict):
     # 判断是 ViT 还是 ResNet
     # ViT 只有 visual.proj，而 ResNet 也是基于 AttentionPool (也有 proj)，但 ViT 的特征是如果存在 visual.proj 且结构符合 ViT 特征
     # 更准确的判断：检查是否存在 'visual.proj' 且不存在 'visual.layer1' (ResNet 特有)
